@@ -3,87 +3,84 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>frontend</artifactId>
-
   <parent>
     <groupId>ch.toubi</groupId>
     <artifactId>coubi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
+  <artifactId>frontend</artifactId>
+
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>11</java.version>
-    <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+    <main.basedir>${project.parent.basedir}</main.basedir>
+    <checkstyle.skip>true</checkstyle.skip>
   </properties>
 
   <build>
+    <resources>
+      <resource>
+        <directory>ui-src</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <version>${frontend-maven-plugin.version}</version>
+        <version>1.6</version>
+        <configuration>
+          <nodeVersion>v10.5.0</nodeVersion>
+          <yarnVersion>v1.5.1</yarnVersion>
+        </configuration>
         <executions>
-          <!-- Install our node and npm version to run npm/node scripts-->
           <execution>
-            <id>install node and npm</id>
+            <id>install node and yarn</id>
             <goals>
-              <goal>install-node-and-npm</goal>
+              <goal>install-node-and-yarn</goal>
             </goals>
-            <configuration>
-              <nodeVersion>v11.5.0</nodeVersion>
-            </configuration>
-          </execution>
-          <!-- Install all project dependencies -->
-          <execution>
-            <id>npm install</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <!-- optional: default phase is "generate-resources" -->
             <phase>generate-resources</phase>
-            <!-- Optional configuration which provides for running any npm command -->
+          </execution>
+          <execution>
+            <id>yarn install</id>
+            <goals>
+              <goal>yarn</goal>
+            </goals>
             <configuration>
               <arguments>install</arguments>
             </configuration>
           </execution>
-          <!-- Build and minify static files -->
           <execution>
-            <id>npm run build</id>
+            <id>yarn lint</id>
             <goals>
-              <goal>npm</goal>
+              <goal>yarn</goal>
             </goals>
             <configuration>
-              <arguments>run build</arguments>
+              <arguments>lint</arguments>
             </configuration>
           </execution>
-          <!-- Run Unit tests with Jest -->
           <execution>
-            <id>npm run test:unit</id>
+            <id>yarn build</id>
             <goals>
-              <goal>npm</goal>
+              <goal>yarn</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <arguments>build</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>yarn test</id>
+            <goals>
+              <goal>yarn</goal>
             </goals>
             <phase>test</phase>
             <configuration>
-              <arguments>run test:unit</arguments>
+              <arguments>test</arguments>
             </configuration>
           </execution>
-          <!-- Run End2End tests with Nightwatch -->
-          <!--
-                    <execution>
-                    <id>npm run test:e2e</id>
-                    <goals>
-                        <goal>npm</goal>
-                    </goals>
-                    <phase>test</phase>
-                    <configuration>
-                          <arguments>run test:e2e</arguments>
-                    </configuration>
-                    </execution>
-                    -->
         </executions>
       </plugin>
     </plugins>
   </build>
+
+
 </project>
