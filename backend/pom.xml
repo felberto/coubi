@@ -12,9 +12,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -85,6 +82,12 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>ch.toubi</groupId>
+            <artifactId>frontend</artifactId>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -108,35 +111,45 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>cope Vue.js frontend content</id>
-                        <phase>generate-resources</phase>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>src/main/resources/public</outputDirectory>
-                            <overwrite>true</overwrite>
+                            <outputDirectory>${project.build.directory}/classes/resources/</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.parent.basedir}/frontend/target/dist</directory>
-                                    <includes>
-                                        <include>static/</include>
-                                        <include>index.html</include>
-                                    </includes>
+                                    <directory>${project.parent.basedir}/frontend/dist/frontend/</directory>
                                 </resource>
                             </resources>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
+                    <warName>coubi</warName>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
 </project>
