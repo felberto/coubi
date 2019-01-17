@@ -4,12 +4,7 @@ jdk:
 
 dist: trusty
 
-addons:
-  sonarcloud:
-    organization: "felberto-github"
-    token:
-      secure: $SONAR_TOKEN
-
 script:
-- mvn clean verify-P sonar
+- mvn clean verify -P sonar \
+  -Dsonar.login=$SONAR_LOGIN_TOKEN
 - mvn clean install -DskipTests -Pprod
