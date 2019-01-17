@@ -4,6 +4,11 @@ jdk:
 
 dist: trusty
 
-script:
-- mvn clean verify -Psonar -Dsonar.login=$SONAR_LOGIN_TOKEN
-- mvn clean install -DskipTests -Pprod
+jobs:
+  include:
+  - stage: sonar
+      script:
+      - mvn clean verify -Psonar -Dsonar.login=$SONAR_LOGIN_TOKEN
+  - stage: build
+      script:
+      - mvn clean install -DskipTests -Pprod
