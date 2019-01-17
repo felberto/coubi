@@ -7,8 +7,8 @@ dist: trusty
 jobs:
   include:
   - stage: sonar
-      script:
+    script:
       - mvn clean verify -Psonar -Dsonar.login=$SONAR_LOGIN_TOKEN
   - stage: build
-      script:
+    script:
       - mvn clean install -DskipTests -Pprod
