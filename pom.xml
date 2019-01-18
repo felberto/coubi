@@ -63,14 +63,7 @@
                     <version>2.0.3</version>
                     <configuration>
                         <appName>coubi</appName>
-                        <includeTarget>false</includeTarget>
-                        <includes>
-                            <include>${project.build.directory}/coubi.war</include>
-                        </includes>
-                        <jdkVersion>${java.version}</jdkVersion>
-                        <processTypes>
-                            <web>java $JAVA_OPTS -jar ${project.build.directory}/coubi.war</web>
-                        </processTypes>
+                        <warFile>${project.build.directory}/coubi.war</warFile>
                     </configuration>
                 </plugin>
                 <plugin>
