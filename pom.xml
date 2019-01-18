@@ -56,6 +56,23 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!-- Heroku Maven Plugin Configuration -->
+                <plugin>
+                    <groupId>com.heroku.sdk</groupId>
+                    <artifactId>heroku-maven-plugin</artifactId>
+                    <version>2.0.3</version>
+                    <configuration>
+                        <appName>coubi</appName>
+                        <includeTarget>false</includeTarget>
+                        <includes>
+                            <include>${project.build.directory}/coubi.war</include>
+                        </includes>
+                        <jdkVersion>${java.version}</jdkVersion>
+                        <processTypes>
+                            <web>java $JAVA_OPTS -jar ${project.build.directory}/coubi.war</web>
+                        </processTypes>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>

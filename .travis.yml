@@ -12,3 +12,6 @@ jobs:
   - stage: build
     script:
       - mvn clean install -DskipTests -Pprod
+  - stage: deploy
+    script:
+    - HEROKU_API_KEY="88b73111-8450-4f82-950b-b643f0456839" mvn clean heroku:deploy
