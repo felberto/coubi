@@ -11,7 +11,7 @@ jobs:
     - mvn clean verify -Psonar -Dsonar.login=$SONAR_LOGIN_TOKEN -Dsonar.branch.name=$TRAVIS_BRANCH
   - stage: build
     script:
-      - mvn clean install -DskipTests -Pprod
+    - mvn clean install -DskipTests -Pprod
   - stage: deploy
     if: branch = master
     script:
