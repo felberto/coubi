@@ -13,4 +13,4 @@ jobs:
   - stage: deploy
     if: branch = master
     script:
-    - HEROKU_API_KEY="$HEROKU_TOKEN" mvn clean heroku:deploy-war
+    - HEROKU_API_KEY="$HEROKU_TOKEN" mvn clean heroku:deploy

@@ -6,7 +6,7 @@
     <groupId>ch.toubi</groupId>
     <artifactId>coubi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>Coubi</name>
     <description>Project with Spring Boot and Angular</description>
@@ -64,9 +64,8 @@
                     <configuration>
                         <appName>coubi</appName>
                         <processTypes>
-                            <web>java $JAVA_OPTS -jar ${project.build.directory}/coubi.war</web>
+                            <web>java $JAVA_OPTS -jar ${project.build.directory}/coubi.jar</web>
                         </processTypes>
-                        <warFile>${project.build.directory}/coubi.war</warFile>
                     </configuration>
                 </plugin>
                 <plugin>

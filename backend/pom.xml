@@ -144,10 +144,10 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
+                <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
-                    <warName>coubi</warName>
+                    <excludes>WEB-INF/lib/tomcat-*.jar</excludes>
+                    <finalName>coubi</finalName>
                 </configuration>
             </plugin>
         </plugins>
