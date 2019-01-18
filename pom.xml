@@ -37,7 +37,7 @@
             <properties>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
                 <sonar.organization>felberto-github</sonar.organization>
-                <sonar.sources>backend/src/main/java,frontend/src</sonar.sources>
+                <sonar.modules>backend,frontend</sonar.modules>
             </properties>
             <build>
                 <plugins>
