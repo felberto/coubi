@@ -6,7 +6,7 @@
     <groupId>ch.toubi</groupId>
     <artifactId>coubi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
     <name>Coubi</name>
     <description>Project with Spring Boot and Angular</description>
