@@ -63,10 +63,6 @@
                     <version>2.0.3</version>
                     <configuration>
                         <appName>coubi</appName>
-                        <includeTarget>false</includeTarget>
-                        <includes>
-                            <include>${project.build.directory}/coubi.jar</include>
-                        </includes>
                         <processTypes>
                             <web>java $JAVA_OPTS -jar ${project.build.directory}/coubi.jar</web>
                         </processTypes>
