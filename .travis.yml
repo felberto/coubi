@@ -16,5 +16,6 @@ jobs:
     script:
     #    - HEROKU_API_KEY="$HEROKU_TOKEN" mvn clean heroku:deploy -Dserver.port=8080
     - docker login -u _ -p "$HEROKU_TOKEN"  registry.heroku.com
-    - docker build -t registry.heroku.com/coubi/test -f Dockerfile .
-    - docker push registry.heroku.com/coubi/test
+    - docker build -t registry.heroku.com/coubi/web -f Dockerfile .
+    - docker push registry.heroku.com/coubi/web
+    - heroku run --app coubi
