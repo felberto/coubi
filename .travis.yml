@@ -15,4 +15,6 @@ jobs:
     if: branch = master
     script:
     #    - HEROKU_API_KEY="$HEROKU_TOKEN" mvn clean heroku:deploy -Dserver.port=8080
-    - docker build -t coubi/test .
+    - docker login -u _ -p "$HEROKU_TOKEN"  registry.heroku.com
+    - docker build -t registry.heroku.com/coubi/test -f Dockerfile .
+    - docker push registry.heroku.com/coubi/test
