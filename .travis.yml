@@ -5,9 +5,9 @@ services:
 
 jobs:
   include:
-  - stage: sonar
-    script:
-    - mvn clean verify -Psonar -Dsonar.login=$SONAR_TOKEN -Dsonar.branch.name=$TRAVIS_BRANCH
+  #  - stage: sonar
+  #    script:
+  #    - mvn clean verify -Psonar -Dsonar.login=$SONAR_TOKEN -Dsonar.branch.name=$TRAVIS_BRANCH
   - stage: build
     script:
     - mvn clean package -DskipTests -Pprod
