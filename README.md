@@ -1,2 +1,2 @@
 # coubi
-Spring Boot / Vue.js Application
+Spring Boot / Angular Application
