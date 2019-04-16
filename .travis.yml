@@ -16,4 +16,4 @@ jobs:
     - mvn clean package -DskipTests -Pprod
   - stage: sonar-backend
     script:
-    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.login=$SONAR_TOKEN_BACKEND
